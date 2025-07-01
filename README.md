@@ -1,59 +1,110 @@
-# Data-Pipeline
+# 🔁 Data Pipeline with Apache Airflow – Steam Store ETL Project
 
-Requirements:
-Objective: This assignment aims to provide hands-on experience in developing a robust Extract,
-Transform, Load (ETL) pipeline using Apache Airflow. You will work with the Steam Store API
-to gather batch data, preprocess it, and integrate it into a scheduled workflow using Airflow.
-Additionally, you will create a Bash script to perform a data preprocessing task.
-Dataset:
-For this assignment, you will use the Steam Store API to gather data about games. The data will
-be in JSON format and will include various attributes like game titles, prices, release dates, and
-more. Please read the documentation of how to use Storm API : https://nikdavis.github.io/posts/2019/steam-data-collection/
-Operations (Tasks):
+This project demonstrates how to build a complete data pipeline using Apache Airflow. It focuses on extracting batch data from the Steam Store API, transforming and preprocessing the data using Python and Bash scripts, and loading it into a MySQL database. The ETL pipeline is integrated into an Apache Airflow DAG for automated and scheduled execution.
 
-Task 1: ETL Implementation
-1. Data Extraction:
- Write a Python script to fetch batch data from the Steam Store API. This script will
-gather the data in batches to ensure efficient data retrieval.
-2. Data Preprocessing
- Create a Bash script to perform at least one data preprocessing task and then
-integrate this script into your Apache Airflow DAG using the BashOperator
-3. Data Transformation:
- Write a Python script for cleaning, filtering, and transforming the dataset. Apply
-a minimum of three tasks related to cleaning and transforming the data.
-4. Data Loading:
- Write a Python script to load the transformed data into a MySQL database on
-localhost. Please make sure that the data is integrated with the loaded data.
+---
 
-Task 2: Building Data Pipeline with Apache Airflow
-Objective: Integrate the ETL process into an Apache Airflow DAG for scheduled execution.
-1. Apache Airflow DAG Setup:
- Establish an Apache Airflow DAG named 'Stream_pipeline'
- Define the DAG's start date, schedule interval (set to run hourly), and other
-necessary configurations.
-2. Task Definitions:
- Create individual PythonOperator tasks within the DAG for each ETL subtask
-(data extraction, transformation and data loading). Also, a BashOperator for the
-data preprocessing task
- Set up dependencies between tasks based on their execution order.
-3. Monitoring and Error Handling:
- Implement monitoring mechanisms within the Apache Airflow DAG for tracking
-performance.
- Establish effective error-handling strategies to handle potential issues during
-execution.
-4. Workflow orchestration :
- Execute the DAG to verify that both the PythonOperators and the BashOperator
-are performed correctly.
+## 🎯 Project Objective
 
-Submission:
- Submit your Python scripts for data extraction, transformation, and loading.
- Submit your Apache Airflow DAG definition.
- Submit your Bash script for data preprocessing.
- Ensure your scripts are well-documented and include comments explaining each step.
+- Build a robust Extract, Transform, Load (ETL) pipeline using Apache Airflow.
+- Extract real-world data from the **Steam Store API** in batch format.
+- Perform **Bash-based preprocessing** and **Python-based transformations**.
+- Load the processed data into a **MySQL** database.
+- Automate and schedule the workflow using **Apache Airflow DAGs**.
 
-Evaluation Criteria:
- Correctness and efficiency of the ETL pipeline.
- Proper integration and scheduling using Apache Airflow.
- Effective use of Bash scripting for preprocessing.
- Quality of documentation and code readability.
- Handling of errors and implementation of monitoring mechanisms.
+---
+
+## 🗃️ Dataset Overview
+
+- Source: [Steam Store API](https://nikdavis.github.io/posts/2019/steam-data-collection/)
+- Format: JSON
+- Data Includes:
+  - Game titles
+  - Prices
+  - Release dates
+  - User reviews
+  - Additional metadata
+
+---
+
+## 🧩 Task Breakdown
+
+### ⚙️ Task 1: ETL Pipeline Development
+
+#### 🟠 1. Data Extraction
+- Develop a Python script to fetch **batch data** from the Steam Store API.
+- Ensure efficient data retrieval by using batch or paginated requests.
+
+#### 🟠 2. Data Preprocessing
+- Write a **Bash script** that performs at least one data cleaning or formatting task.
+- Example: Removing nulls, renaming files, adjusting encoding.
+- Integrate this script using **Airflow's BashOperator**.
+
+#### 🟠 3. Data Transformation
+- Create a Python script to:
+  - Clean and filter records
+  - Normalize and reformat fields
+  - Apply at least **three transformation tasks**
+- Prepare data for database loading.
+
+#### 🟠 4. Data Loading
+- Write a Python script to load the transformed data into a **MySQL** database.
+- Ensure schema compatibility and data integrity with existing records.
+
+---
+
+### 🛠️ Task 2: Workflow Orchestration with Apache Airflow
+
+#### 🗂️ DAG Setup
+- Create an **Apache Airflow DAG** named `steam_pipeline`.
+- Configure:
+  - `start_date`
+  - `schedule_interval` (set to hourly)
+  - `catchup`, `retries`, and DAG-level defaults
+
+#### 🧱 Task Definitions
+- Define each ETL step as a separate task:
+  - `PythonOperator` for **Extraction**, **Transformation**, and **Loading**
+  - `BashOperator` for **Preprocessing**
+- Establish proper **task dependencies** to maintain execution order.
+
+#### 📈 Monitoring and Error Handling
+- Implement monitoring logs for task success/failure tracking.
+- Add retry mechanisms and exception handling within each script and DAG.
+
+#### ▶️ DAG Execution
+- Trigger the DAG manually or wait for scheduled runs.
+- Ensure all operators execute as expected and data flows correctly through the pipeline.
+
+---
+
+## 📦 Deliverables
+
+- ✅ Python script for **data extraction**
+- ✅ Bash script for **data preprocessing**
+- ✅ Python script for **data transformation**
+- ✅ Python script for **data loading**
+- ✅ Complete Airflow DAG (`steam_pipeline.py`)
+- ✅ Documentation and comments for each script
+
+---
+
+## 🧠 Key Tools & Technologies
+
+| Tool              | Purpose                                  |
+|-------------------|------------------------------------------|
+| Apache Airflow    | Workflow orchestration and scheduling    |
+| Steam Store API   | Real-world data source (JSON format)     |
+| Python            | Data extraction, transformation, loading |
+| Bash              | Preprocessing automation                 |
+| MySQL             | Database for storing structured data     |
+
+---
+
+## 📊 Evaluation Criteria
+
+- ✅ Functional and efficient ETL pipeline
+- ✅ Proper integration with Apache Airflow DAG
+- ✅ Use of Bash scripting in a real-world context
+- ✅ Code clarity and well-documented scripts
+- ✅ Monitoring, logging, and error-handling mechanisms
