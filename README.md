@@ -1,7 +1,4 @@
 # Data-Pipeline
-Worked With My Friend To Build a Data Pipeline and Workflow Operations
-
-
 
 Requirements:
 Objective: This assignment aims to provide hands-on experience in developing a robust Extract,
